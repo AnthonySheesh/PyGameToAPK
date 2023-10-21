@@ -16,7 +16,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,mp3,wav,ogg
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = img/*
+#source.include_patterns = img/*,
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -37,7 +37,7 @@ version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame-ce,typing_extensions,pygame_menu,
+requirements = python3,pygame
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
