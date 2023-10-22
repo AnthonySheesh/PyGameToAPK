@@ -1,10 +1,9 @@
 [app]
 
 # (str) Title of your application
-title = flappy
-
+title = Flappy Bird
 # (str) Package name
-package.name = flappy
+package.name = flappyBird
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.compro.flappy
@@ -13,42 +12,41 @@ package.domain = com.compro.flappy
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,mp3,wav,ogg
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-#source.include_patterns = img/*,
+#source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin, venv, dis, build, official_assets
+#source.exclude_dirs = tests, bin, venv
 
 # (list) List of exclusions using pattern matching
 # Do not prefix with './'
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-# version = 0.1
+version = 0.1
 
 # (str) Application versioning (method 2)
-version.regex = __version__ = ['"](.*)['"]
-version.filename = %(source.dir)s/main.py
+# version.regex = __version__ = ['"](.*)['"]
+# version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame
+requirements =python3,pygame,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,png,jpeg
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
-# presplash.filename = %(source.dir)s/assets/Empty.png
-presplash.filename = %(source.dir)s/assets/favicon.png
+#presplash.filename = %(source.dir)s/data/presplash.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/assets/favicon.png
+#icon.filename = %(source.dir)s/data/icon.png
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
@@ -75,14 +73,14 @@ osx.kivy_version = 1.9.1
 #
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = 0
 
 # (string) Presplash background color (for android toolchain)
 # Supported formats are: #RRGGBB #AARRGGBB or one of the following names:
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-android.presplash_color = #00000000
+#android.presplash_color = #FFFFFF
 
 # (string) Presplash animation using Lottie format.
 # see https://lottiefiles.com/ for examples and https://airbnb.design/lottie/
@@ -97,22 +95,21 @@ android.presplash_color = #00000000
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
 #android.permissions = android.permission.INTERNET, (name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)
-android.permissions = INTERNET, ACCESS_NETWORK_STATE, AD_ID 
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+#android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
 
 # (int) Android SDK version to use
-#android.sdk = 33
+#android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 25b
+#android.ndk = 23b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -124,7 +121,7 @@ android.ndk = 25b
 #android.ndk_path =
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-#android.sdk_path =
+#android.sdk_path = 
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
@@ -179,7 +176,7 @@ android.ndk = 25b
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
-android.add_src = Android/java 
+#android.add_src =
 
 # (list) Android AAR archives to add
 #android.add_aars =
@@ -203,7 +200,7 @@ android.add_src = Android/java
 #android.add_resources =
 
 # (list) Gradle dependencies to add
-android.gradle_dependencies = com.google.android.gms:play-services-ads:22.1.0,com.google.gms:google-services:4.3.15,androidx.work:work-runtime:2.8.0,androidx.fragment:fragment:1.5.5,com.google.android.gms:play-services-games-v2:17.0.0,com.google.android.gms:play-services-tasks:18.0.2
+#android.gradle_dependencies =
 
 # (bool) Enable AndroidX support. Enable when 'android.gradle_dependencies'
 # contains an 'androidx' package, or any package from Kotlin source.
@@ -218,7 +215,7 @@ android.gradle_dependencies = com.google.android.gms:play-services-ads:22.1.0,co
 # (list) Gradle repositories to add {can be necessary for some android.gradle_dependencies}
 # please enclose in double quotes 
 # e.g. android.gradle_repositories = "maven { url 'https://kotlin.bintray.com/ktor' }"
-#android.add_gradle_repositories ="mavenCentral","google"
+#android.add_gradle_repositories =
 
 # (list) packaging options to add 
 # see https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html
@@ -262,8 +259,7 @@ android.gradle_dependencies = com.google.android.gms:play-services-ads:22.1.0,co
 #android.wakelock = False
 
 # (list) Android application meta-data to set (key=value format)
-android.meta_data = com.google.android.gms.ads.APPLICATION_ID=ca-app-pub-4493613666001226~6265304991,com.google.android.gms.games.APP_ID=\u0031058824792909
-# Use ca-app-pub-3940256099942544~3347511713 for tests
+#android.meta_data =
 
 # (list) Android library project to add (will be added in the
 # project.properties automatically.)
@@ -276,7 +272,7 @@ android.meta_data = com.google.android.gms.ads.APPLICATION_ID=ca-app-pub-4493613
 #android.logcat_filters = *:S python:D
 
 # (bool) Android logcat only display log for activity's pid
-android.logcat_pid_only = True
+#android.logcat_pid_only = False
 
 # (str) Android additional adb arguments
 #android.adb_args = -H host.docker.internal
@@ -324,7 +320,7 @@ android.allow_backup = True
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
-p4a.branch = master
+#p4a.branch = master
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
 #p4a.commit = HEAD
@@ -333,7 +329,7 @@ p4a.branch = master
 #p4a.source_dir =
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
-p4a.local_recipes = recipes
+#p4a.local_recipes =
 
 # (str) Filename to the hook for p4a
 #p4a.hook =
